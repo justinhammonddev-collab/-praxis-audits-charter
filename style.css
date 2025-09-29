@@ -42,7 +42,7 @@ header h1 {
 }
 
 section {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 
 h2 {
@@ -63,6 +63,42 @@ a:hover {
     color: #FFFFFF;
 }
 
+/* NEW BOOK STYLES */
+.book-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.book-cover {
+    flex-shrink: 0;
+    width: 200px;
+    height: auto;
+    border: 2px solid #333;
+}
+
+.book-description p {
+    margin-bottom: 1em;
+}
+
+.button {
+    display: inline-block;
+    background-color: #00FF87;
+    color: #121212;
+    padding: 12px 25px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: #121212;
+}
+/* END NEW BOOK STYLES */
+
 footer {
     text-align: center;
     margin-top: 40px;
@@ -71,3 +107,14 @@ footer {
     font-size: 0.9em;
     color: #777;
 }
+
+@media (max-width: 600px) {
+    .book-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .book-cover {
+        margin-bottom: 20px;
+    }
+}
+
