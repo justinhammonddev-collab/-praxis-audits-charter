@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Humai Logo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;700&display=swap');
+        
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #0a0a0a; /* Deeper black for more contrast */
+            overflow: hidden;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .cover-container {
+            width: 450px;
+            height: 675px;
+            background: linear-gradient(145deg, #1a1a1a, #101010);
+            border: 1px solid #333;
+            box-shadow: 0 0 50px rgba(0, 255, 135, 0.25);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .cover-container:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 80px rgba(0, 255, 135, 0.5);
+        }
+
+        .title-group {
+            text-align: center;
+            color: #E0E0E0;
+            z-index: 2;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 3em;
+            font-weight: 700;
+            color: #00FF87;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.5);
+        }
+
+        .author {
+            font-size: 1.2em;
+            font-weight: 300;
+            margin-top: 15px;
+            color: #aaa;
+        }
+
+        .hands-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+        
+        svg {
+            width: 90%;
+            height: 90%;
+            overflow: visible;
+        }
+
+        #human-hand, #ai-hand {
+            animation: moveHands 5s ease-in-out infinite alternate;
+        }
+        
+        #human-hand {
+            transform-origin: center;
+            transform: translateX(-20%);
+        }
+
+        #ai-hand {
+            transform-origin: center;
+            transform: translateX(20%);
+        }
+
+        #light-pulse {
+            opacity: 0;
+            animation: pulse 5s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+        
+        @keyframes moveHands {
+            0% { transform: translateX(-20%); }
+            45% { transform: translateX(-2%); }
+            55% { transform: translateX(-2%); }
+            100% { transform: translateX(20%); }
+        }
+        
+        #ai-hand {
+             animation-name: moveAiHand;
+        }
+        @keyframes moveAiHand {
+             0% { transform: translateX(20%); }
+             45% { transform: translateX(2%); }
+             55% { transform: translateX(2%); }
+             100% { transform: translateX(-20%); }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0; transform: scale(0.5); }
+            45% { opacity: 0; transform: scale(0.5); }
+            55% { opacity: 1; transform: scale(1.5); filter: drop-shadow(0 0 15px #fff); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://justinhammonddev-collab.github.io/praxis-audits-charter/" target="_blank" style="text-decoration: none;">
+        <div class="cover-container">
+            <div class="hands-container">
+                <svg viewBox="0 0 200 200">
+                    <defs>
+                        <radialGradient id="radial-gradient">
+                            <stop offset="0%" stop-color="#FFFFFF" stop-opacity="1"/>
+                            <stop offset="80%" stop-color="#00FF87" stop-opacity="0.5"/>
+                            <stop offset="100%" stop-color="#00FF87" stop-opacity="0"/>
+                        </radialGradient>
+                        <linearGradient id="circuit-pattern" x1="0" y1="0" x2="1" y2="1">
+                           <stop offset="0%" stop-color="#00FF87"/>
+                           <stop offset="100%" stop-color="#00A050"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Light Pulse -->
+                    <circle id="light-pulse" cx="100" cy="100" r="35" fill="url(#radial-gradient)"/>
+                    
+                    <!-- AI Hand -->
+                    <g id="ai-hand" fill="none" stroke="url(#circuit-pattern)" stroke-width="2" filter="url(#glow)">
+                        <path d="M 80,110 L 80,140 L 90,140 L 90,110 Z" />
+                        <path d="M 95,110 L 95,145 L 105,145 L 105,110 Z" />
+                        <path d="M 110,110 L 110,140 L 120,140 L 120,110 Z" />
+                        <path d="M 125,110 L 125,135 L 135,135 L 135,110 Z" />
+                        <path d="M 75,100 Q 70,80 90,80 L 110,80 Q 130,80 125,100 Z" />
+                        <rect x="75" y="80" width="50" height="30" rx="5" stroke-width="1.5"/>
+                        <!-- circuits -->
+                        <line x1="78" y1="86" x2="85" y2="86" />
+                        <line x1="85" y1="86" x2="85" y2="96" />
+                        <line x1="90" y1="104" x2="90" y2="114" />
+                        <line x1="100" y1="104" x2="100" y2="124" />
+                         <line x1="115" y1="82" x2="122" y2="98" />
+                    </g>
+                    
+                    <!-- Human Hand -->
+                    <g id="human-hand" fill="#cccccc" transform="scale(-1, 1) translate(-200, 0)">
+                        <path d="M 80,110 L 80,140 L 90,140 L 90,110 Z" />
+                        <path d="M 95,110 L 95,145 L 105,145 L 105,110 Z" />
+                        <path d="M 110,110 L 110,140 L 120,140 L 120,110 Z" />
+                        <path d="M 125,110 L 125,135 L 135,135 L 135,110 Z" />
+                        <path d="M 75,100 Q 70,80 90,80 L 110,80 Q 130,80 125,100 Z" />
+                    </g>
+                </svg>
+            </div>
+            <div class="title-group">
+                <h1 class="title">The Coder's</h1>
+                <h1 class="title">Gambit</h1>
+                <p class="author">Justin H. Hammond</p>
+            </div>
+        </div>
+    </a>
+</body>
+</html>
